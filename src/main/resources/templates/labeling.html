@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<div th:replace="~{layout/layout :: head}"></div>
+	<meta charset="UTF-8">
+
+<body>
+	<header th:replace="~{layout/layout :: header}"></header>
+	<!--PROBANDO -->
+	<div class="container-fluid">
+<!--		<div th:if="${defaultDate != null}">-->
+<!--		   defaultDate exist-->
+<!--		   <div th:text="${defaultDate}"></div>-->
+<!--		</div>-->
+<!--		<div th:if="${selectedDate != null}">-->
+<!--		   selectedDate exist-->
+<!--		   <div th:text="${selectedDate}"></div>-->
+<!--		</div>-->
+<!--		<div th:if="${videoFilePlaceholder != null}">-->
+<!--		   videoFilePlaceholds exist-->
+<!--		   <div th:text="${videoFilePlaceholder.fechaInicio}"></div>-->
+<!--		</div>-->
+		<div class="row row-cols-1 row-cols-md-2 g-4 py-4">
+			<div class="col">
+				<div class="card">
+					<div class="card-body shadow">
+						<div id="video-container" class="video-container-cls">
+							<video id="my-video" class="video-js shadow rounded border" controls preload="auto" >
+								<source th:src="${'/play/' + videoId}" type="video/mp4"/>
+							</video>
+							<div id="video-minimap-container" class="video-minimap-container-cls">
+								<div class="current-zoom-box-indicator"></div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card shadow">
+					<div class="card-body text-center">
+						<h5 class="card-title">Seleccionar fecha</h5>
+						<form th:action="@{/buscarPorFecha}" method="post">
+					        <div>
+					            <label for="selectedDate">Buscando por fecha:</label>
+					            <!-- Use th:value to set the default date -->
+					            <input type="date" id="date" name="date" th:value="${defaultDate}" required>
+					        </div>
+					        <div>
+					            <button type="submit" class="btn btn-outline-primary my-3 shadow">Buscar</button>
+					        </div>
+					    </form>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card shadow">
+					<div class="card-body">
+						<div th:each="referenceSignal, status: ${currentReferenceSignalFiles}">
+							<div th:id="${'plot' + status.index}" class="plots" th:data-id="${referenceSignal.id}"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card shadow">
+					<div class="card-body">
+						<table>
+						    <tr>
+						        <th>Videos</th>
+						        <th>Reproducir</th>
+						    </tr>
+						    
+						    <tr th:each="video: ${filteredVideoFiles}">
+						        <td th:text="${video.fechaInicio}"></td>
+							        <form th:action="@{/loadVideoSignal}" method="post">
+						                <td>
+											<input type="hidden" th:name="videoId" th:value="${video.id}">
+											<button type="submit" class="btn-outline-danger btn-sm">&#9654;</input>
+			                			</td>
+							        </form>
+						    </tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="~{layout/layout :: footer}"></footer>
+	<script th:src="@{js/project/labeling-video.js}"></script>
+	<script th:src="@{js/project/labeling-plots.js}"></script>
+	<script th:src="@{js/project/labeling-dataload.js}"></script>
+</body>

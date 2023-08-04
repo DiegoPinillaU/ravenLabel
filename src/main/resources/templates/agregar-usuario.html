@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/layout :: head}"></head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<header th:replace="~{layout/layout :: header}"></header>
+	<div class="container-sm">
+		<form th:action="@{/agregar-usuario-form}" th:object="${usuario}"
+			method="post">
+			<div class="form-outline mb-4">
+				<label for="inputNombre" class="form-label"> Nombre de
+					usuario </label> <input type="text" th:field="*{username}"
+					class="form-control" id="inputNombre" placeholder="Nombre">
+				<small class="form-text text-danger"
+					th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></small>
+			</div>
+			<div class="form-outline mb-4">
+				<label for="inputEmail" class="form-label">Email</label> <input
+					type="email" class="form-control" id="inputEmail"
+					placeholder="correo@servidor.com" th:field="*{email}"><small
+					class="form-text text-danger" th:if="${#fields.hasErrors('email')}"
+					th:errors="*{email}"></small>
+			</div>
+			<div class="form-outline mb-4">
+				<label for="select">Selecccionar estado</label> <select
+					class="form-select" th:field="*{enabled}" id="select"
+					aria-label="Default select example">
+					<option value="true">Activo</option>
+					<option value="false">Inactivo</option>
+				</select>
+			</div>
+			<div class="form-outline mb-4">
+				<label for="inputRoles" class="form-label">Roles</label>
+				<p>
+					<input class="mx-2" type="checkbox" name="roles" th:each="rol : ${roles}"
+						th:text="${rol}" />
+				</p>
+			</div>
+			<label for="inputId" class="form-label"></label> <input type="hidden"
+				th:field="*{id}" class="form-control" id="inputId">
+
+			<div class="form-outline mb-4">
+				<button type="submit" class="btn btn-primary">Crear Usuario</button>
+			</div>
+		</form>
+	</div>
+	<footer th:replace="~{layout/layout :: footer}"></footer>
+</body>
+</html>

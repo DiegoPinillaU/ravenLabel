@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+<meta charset="UTF-8">
+<title>RavenLabel</title>
+<!-- CSS Only-->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}">
+<link rel="stylesheet" th:href="@{/css/navbar-custom.css}">
+<link rel="stylesheet" th:href="@{/css/video-js.css}">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<link rel="icon" th:href="@{icons/favicon.png}" type="image/x-icon">
+</head>
+<body>
+	<header th:fragment="header">
+		<!--Nav principal -->
+		<nav class="navbar navbar-expand-lg bg-primary">
+			<div class="container-fluid">
+				<a class="navbar-brand text-light" th:href="@{/index}">RavenLabel</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+					aria-controls="navbarNavDropdown" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavDropdown">
+					<ul class="navbar-nav">
+						<li th:class="${currentURI.equals('/index') ? 'nav-item active' : 'nav-item inactive'}">
+							<a class="nav-link" aria-current="page" th:href="@{/index}">Inicio</a></li>
+						<li th:class="${currentURI.equals('/labeling') ? 'nav-item active' : 'nav-item inactive'}">
+							<a class="nav-link" th:href="@{/labeling}">Etiquetado</a>
+						</li>
+						<li th:class="${currentURI.equals('/downloads') ? 'nav-item active' : 'nav-item inactive'}">
+							<a class="nav-link" th:href="@{/downloads}">Descargas</a>
+						</li>
+						<li th:class="${currentURI.equals('/configs') ? 'nav-item active' : 'nav-item inactive'}">
+							<a class="nav-link" th:href="@{/configs}">Configuraciones</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Admin</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" th:href="@{/agregar-usuario}">Agregar usuarios</a></li>
+							</ul>							
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		
+
+		<!--NOTIFICACIONES -->
+		<div class="container mx-auto">
+			<div
+				class="alert alert-success alert-dismissible d-flex align-items-center fade show  shadow rounded"
+				th:if="${success != null}">
+				<img th:src="@{/icons/check-circle.svg}" alt="imagen" width="20"
+					height="20"><strong class="mx-2" th:text="${success}"></strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+			</div>
+			<div
+				class="alert alert-danger alert-dismissible d-flex align-items-center fade show  shadow rounded"
+				th:if="${error != null}">
+				<img th:src="@{/icons/dash-circle.svg}" alt="imagen" width="20"
+					height="20"><strong class="mx-2" th:text="${error}"></strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+			</div>
+			<div
+				class="alert alert-info alert-dismissible d-flex align-items-center fade show  shadow rounded"
+				th:if="${info != null}">
+				<img th:src="@{/icons/dash-circle.svg}" alt="imagen" width="20"
+					height="20"><strong class="mx-2" th:text="${info}"></strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+			</div>
+		</div>
+		<!--NOTIFICACIONES -->
+	</header>
+	<footer th:fragment="footer">
+		<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+		<script th:src="@{/js/jquery-3.5.1.js}"></script>
+		<script th:src="@{/js/popper.min.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/video.min.js}"></script>
+		<script th:src="@{/js/plotly.min.js}"></script>
+	</footer>
+</body>
+</html>

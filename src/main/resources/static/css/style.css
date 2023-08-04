@@ -1,0 +1,121 @@
+/*html, body {*/
+/*  margin: 0;*/
+/*  display: grid;*/
+/*}*/
+.video-container-cls {
+  position: relative;
+  width: 100%;
+  height: 0;
+  z-index: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+}
+.video-container-cls:hover {
+  cursor: zoom-in;
+}
+
+.video-minimap-container-cls {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  width: 20%;
+  height: 20%;
+  opacity: 50%;
+}
+
+.current-zoom-box-indicator {
+  position: absolute;
+  border: 1px solid red;
+  z-index: 15;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.3s ease-out;
+}
+
+#my-video {
+	position: unset;
+	width: 100%;
+	height: auto;
+}
+
+/*.vertical-center {*/
+/*	margin-top: auto;*/
+/*	margin-bottom: auto;*/
+/*}*/
+
+/*p {*/
+/*	vertical-align: middle;*/
+/*}*/
+
+video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: top left;
+  transform: scale(1) translate(0px, 0px);
+  transition: transform 0.3s ease-out;
+  background-color: black;
+}
+
+/*.controls button:hover {*/
+/*  cursor: pointer;*/
+/*}*/
+
+/*table {*/
+/*	padding-right: 10px;*/
+/*}*/
+
+/*tbody {*/
+/*	display: block;*/
+/*	height: 80vh;*/
+/*	overflow: auto;*/
+/*}*/
+
+/*thead tr {*/
+/*  display: grid;*/
+/*  grid-template-columns: 2fr 1fr 1fr 1fr;*/
+/*}*/
+
+/*tbody tr{*/
+/*  display: grid;*/
+/*  grid-template-columns: 2fr 1fr 1fr 1fr;*/
+/*  cursor: pointer;*/
+/*}*/
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+tr{
+	height: 1px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+/*.red-button {*/
+/*    background-color: red;*/
+/*    color: white;*/
+/*    padding: 5px 10px;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    cursor: pointer;*/
+/*}*/
+/*.green-button {*/
+/*    background-color: green;*/
+/*    color: white;*/
+/*    padding: 5px 10px;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    cursor: pointer;*/
+/*}*/

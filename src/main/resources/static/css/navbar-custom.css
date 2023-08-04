@@ -1,0 +1,9 @@
+/* Custom CSS */
+.navbar .nav-item.active {
+  background-color: #ffffff; /* Set your desired background color here */
+}
+
+   
+.navbar .nav-item:hover {
+  background-color: #ffffff; /* Set your desired background color here */
+}
